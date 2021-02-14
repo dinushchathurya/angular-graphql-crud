@@ -9,7 +9,7 @@ module.exports = buildSchema(`
     type QuoteData {
         quotes: [Quote!]!
     }
-    type QuoteInputData {
+    input QuoteInputData {
         quote: String!
         author: String!
     }
