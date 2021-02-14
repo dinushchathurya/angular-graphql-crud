@@ -10,7 +10,7 @@ const quoteSchema = new Schema({
     author: {
         type: String,
         required: true
-    }
+    },
 })
 
 module.exports = mongoose.model('Quote', quoteSchema);
