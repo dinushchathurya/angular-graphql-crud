@@ -12,4 +12,15 @@ module.exports = {
             }),
         };
     },
+    createQuote: async function({ quoteInput}) {
+        const quote = new Quote({
+            quote: quoteInput.quote,
+            author: quoteInput.author
+        });
+        const createdQuote = await quote.save();
+        return {
+            ...createdQuote._doc,
+            _id: createdQuote._id.toString(),
+        }
+    }
 };
