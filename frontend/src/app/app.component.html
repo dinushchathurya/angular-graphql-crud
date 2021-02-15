@@ -1,10 +1,20 @@
-<h2>Create Quote</h2>
-quote: <input #quote type="text" /> author: <input #author type="text" />
-<button (click)="create(quote.value, author.value)">Submit</button>
-<h1>Quotes</h1>
-<ul>
-  <li *ngFor="let quote of quotes | async">
-    "{{ quote.quote }}", {{ quote.author }}
-    <button (click)="delete(quote._id)">Delete</button>
-  </li>
-</ul>
+<mat-toolbar>
+  <span>Angular GraphQL CRUD</span>
+</mat-toolbar>
+<div class="flex-row-multicolum">
+  <div class="flex-col">
+    <h2>Create Quote</h2>
+    Quote : <input #quote type="text" /><br>
+    Author: <input #author type="text" style="margin-top:5px"/><br>
+    <button style="background-color: #4CAF50; margin-top:5px" (click)="create(quote.value, author.value)">Submit</button>
+  </div>
+  <div class="flex-col">
+    <h1>Quotes</h1>
+    <ul>
+      <li *ngFor="let quote of quotes | async">
+        {{ quote.quote }} by {{ quote.author }}
+        <button (click)="delete(quote._id)" style="background-color: red; margin-left:5px">Delete</button>
+      </li>
+    </ul>
+  </div>
+</div>

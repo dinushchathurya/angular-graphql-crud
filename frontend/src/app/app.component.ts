@@ -1,10 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
-import { Apollo } from "apollo-angular";
-import gql from "graphql-tag";
+import { Apollo } from 'apollo-angular';
+import gql from 'graphql-tag';
 
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 const GET_QUOTES = gql`
   {
@@ -39,12 +39,12 @@ const DELETE_QUOTE = gql`
 `;
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = "frontend";
+  title = 'Angular GraphQL CRUD';
 
   quotes: Observable<any>;
 
@@ -74,7 +74,7 @@ export class AppComponent implements OnInit {
         },
       })
       .subscribe(() => {
-        console.log("created");
+        console.log('created');
       });
   }
 
@@ -89,7 +89,7 @@ export class AppComponent implements OnInit {
         },
       })
       .subscribe(() => {
-        console.log("deleted");
+        console.log('deleted');
       });
   }
 }

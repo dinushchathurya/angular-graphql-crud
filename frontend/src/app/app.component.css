@@ -1,0 +1,22 @@
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  padding: 15px;
+  margin: 15px 15px 15px 15px;
+  /* background: #ddd; */
+}
+
+.flex-row-multicolum {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+}
+
+.flex-row-multicolum .flex-col {
+  width: 40%;
+  margin: 0 15px 15px;
+}
