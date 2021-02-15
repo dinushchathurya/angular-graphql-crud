@@ -17,14 +17,12 @@
     "lib": [
       "es2018",
       "dom",
-      "esnext.asynciterable",
-
+      "esnext.asynciterable"
     ],
     "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
-    "disableTypeScriptVersionCheck": true
+    "strictInjectionParameters": true
   }
- }
+}

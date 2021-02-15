@@ -1,21 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
+import { Component, OnInit } from "@angular/core";
 
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/Operators';
+import { Apollo } from "apollo-angular";
+import gql from "graphql-tag";
 
-const GET_QUOTES = gql `
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
+
+const GET_QUOTES = gql`
   {
     quotes {
       quotes {
         _id
-        quotes
+        quote
         author
       }
     }
   }
-` ;
+`;
 
 const CREATE_QUOTE = gql`
   mutation createQuote($quote: String!, $author: String!) {
@@ -38,25 +39,28 @@ const DELETE_QUOTE = gql`
 `;
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-  title = 'angular';
+  title = "frontend";
 
   quotes: Observable<any>;
 
   constructor(private apollo: Apollo) {}
 
   ngOnInit() {
-    this.quotes = this.apollo.watchQuery({
-      query: GET_QUOTES
-    }).valueChanges.pipe(
-      map((result: any) => {
-        return result.data.quotes.quotes;
+    this.quotes = this.apollo
+      .watchQuery({
+        query: GET_QUOTES,
       })
-    );
+      .valueChanges.pipe(
+        map((result: any) => {
+          console.log(result.data.quotes.quotes);
+          return result.data.quotes.quotes;
+        })
+      );
   }
 
   create(quote: string, author: string) {
@@ -65,12 +69,12 @@ export class AppComponent implements OnInit {
         mutation: CREATE_QUOTE,
         refetchQueries: [{ query: GET_QUOTES }],
         variables: {
-          quote,
-          author,
+          quote: quote,
+          author: author,
         },
       })
       .subscribe(() => {
-        console.log('created');
+        console.log("created");
       });
   }
 
@@ -81,11 +85,11 @@ export class AppComponent implements OnInit {
         mutation: DELETE_QUOTE,
         refetchQueries: [{ query: GET_QUOTES }],
         variables: {
-          id,
+          id: id,
         },
       })
       .subscribe(() => {
-        console.log('deleted');
+        console.log("deleted");
       });
   }
 }
